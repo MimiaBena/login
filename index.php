@@ -10,7 +10,7 @@
             <form method="post" action="index.php">
                 <h1>Login in</h1>
                Login:<span>*</span>
-                <input type=text name="name" placeholder="Your Identifiant!">
+                <input type=text name="name" placeholder="Your Identifiant!!">
                 <br><br>
                 Password:<span>*</span>
                 <input type="password" name="password" placeholder="Your password!">
