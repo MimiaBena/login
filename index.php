@@ -13,7 +13,7 @@
         <div class="login">
             
             <form method="post" action="">
-                <h1>Login in</h1>
+                <h1>Login</h1>
                Login:<span>*</span>
                 <input type=text name="email" placeholder="Your Identifiant!"><span><?php echo $messageErr; ?></span>
                 <br><br>
