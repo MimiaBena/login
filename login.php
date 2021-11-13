@@ -16,20 +16,8 @@
              
              $sql ="SELECT * FROM `users` WHERE email='$email' AND password='$password'";
              $result = mysqli_query($con,$sql) or die('Error: ' . mysqli_error($con));
-  $rows = mysqli_num_rows($result);
-  if($rows==1){
-                 
-                 //$result=execute(array($email, $password));
-                
-            //$count = mysqli_num_rows($result);
-     // $reponse      = mysqli_fetch_array($result);
-        //$count = $reponse['count(*)'];
-        //if($result){
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      //if($result == 1) {
-          
-        
+             $rows = mysqli_num_rows($result);
+             if($rows==1){
                       $_SESSION['email'] = $email;
                       header("Location: acceuil.php");
                 }else{
