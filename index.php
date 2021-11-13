@@ -17,9 +17,12 @@
                Login:<span>*</span>
                 <input type=text name="email" placeholder="Your Identifiant!"><span><?php echo $messageErr; ?></span>
                 <br><br>
-                Password:<span>*</span>
+                Password:<span>*</span><a href="update.php" class="psw"> Forgot password?</a>
                 <input type="password" name="password" placeholder="Your password!"><span><?php echo $messageErr; ?></span>
+                
                 <input type="submit" name="Login" value="Login">
+                <p>New?<a href="register.php">Create an account.</a></p>
+                
                    
         
         

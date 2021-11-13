@@ -35,3 +35,9 @@ input[type=submit]{
 input[type=submit]:hover {
     background-color: blue;
 }
+.psw{
+    
+    float: left;
+    margin: auto auto auto 5px;
+    background-color: aquamarine;
+}

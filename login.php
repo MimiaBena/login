@@ -22,11 +22,9 @@
                       header("Location: acceuil.php");
                 }else{
                     $messageErr= " Email or password incorrect";
-                   header("Location: index.php");
+                   //header("Location: index.php");
                 }
-              
-             
-                        
+                
          }          
           
      }
