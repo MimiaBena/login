@@ -58,7 +58,7 @@
                    $firstname = inputTest($_POST['firstname']);
                    $lastname = inputTest($_POST['lastname']);
                    $email = inputTest($_POST['email']);
-                   $password = inputTest($_POST['passwordconf']);
+                   $password = inputTest($_POST['password']);
                    $passwordconf = inputTest($_POST['passwordconf']);
 $sql = "INSERT INTO users SET firstname='".$_POST['firstname']."', lastname='".$_POST['lastname']."', email='".$_POST['email']."', password='".hash('sha256',$_POST['password'])."'";
 //$sql = "INSERT INTO `users`( firstname, lastname, email, password) VALUES ('$firstname','$lastname','$email' ,'$password')";
