@@ -16,8 +16,8 @@
     <body>
         
         <h1>Acceuil</h1>
-        <p>Bienvenue <?php echo $_SESSION['email']; ?></p>
-        <p>C'est votre tableau de bord.</p>
+        <p>Welcome <?php echo $_SESSION['email']; ?></p>
+        <p>it's your..............</p>
          <a href="logout.php" >Déconnexion</a>
     
     
