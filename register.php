@@ -5,6 +5,10 @@
 
 
      if($_SERVER["REQUEST_METHOD"] == "POST"){
+         //$q="SELECT * FROM users WHERE email='".$_POST['email']."'";
+         //$s= mysqli_query($con,$q);
+              // $res = mysqli_query($con,$q) or die('Error: ' . mysqli_error($con));
+             //$r = mysqli_num_rows($res);
          //check form
          if(isset($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password'],$_POST['passwordconf'])){
              // check input et personalise the message
@@ -39,25 +43,37 @@
              }
              elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
                $emailErr = "Invalid email format!";   
-        }elseif(!mysqli_query($con,"SELECT * FROM users WHERE email='".$_POST['email']."'") ){
+        }
+                    
+
+             
+             /*elseif(mysqli_query($con,"SELECT * FROM users WHERE email='".$_POST['email']."'")){
                  //mysqli_num_rows(mysqli_query($con,"SELECT * FROM users WHERE email='".$_POST['email']."'"))==1){
                    $emailErr = "It's already exist!";
                  
-             }else{
+             }*/
+             
+             else{
                 
                    $firstname = inputTest($_POST['firstname']);
                    $lastname = inputTest($_POST['lastname']);
                    $email = inputTest($_POST['email']);
                    $password = inputTest($_POST['passwordconf']);
                    $passwordconf = inputTest($_POST['passwordconf']);
-$sql = "INSERT INTO users SET firstname='".$_POST['firstname']."', lastname='".$_POST['lastname']."', email='".$_POST['email']."', password='".$_POST['password']."'";
+$sql = "INSERT INTO users SET firstname='".$_POST['firstname']."', lastname='".$_POST['lastname']."', email='".$_POST['email']."', password='".hash('sha256',$_POST['password'])."'";
 //$sql = "INSERT INTO `users`( firstname, lastname, email, password) VALUES ('$firstname','$lastname','$email' ,'$password')";
                  if(!mysqli_query($con, $sql)){
                      
                      echo "Problem connexion: ".mysqli_error($con);
                  }else{
                      
-                      echo "Succed ";
+                      //echo "Succed ";
+                     
+                     
+                     echo "<div class='sucess'>
+                    <h3>Vous êtes inscrit avec succès.</h3>
+                   <p>Cliquez ici pour vous <a href='index.php'>Login</a></p>
+                      </div>";
                  }
                    /*$sql = "INSERT INTO `users`( firstname, lastname, email, password) VALUES ('$firstname', '$lastname','$email','$password')";
              $result = mysqli_query($con, $sql) or die('Error: ' . mysqli_error($con));*/

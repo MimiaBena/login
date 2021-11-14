@@ -14,7 +14,7 @@
                  
             
              
-             $sql ="SELECT * FROM `users` WHERE email='$email' AND password='$password'";
+             $sql ="SELECT * FROM `users` WHERE email='$email' AND password='".hash('sha256',$password)."'";
              $result = mysqli_query($con,$sql) or die('Error: ' . mysqli_error($con));
              $rows = mysqli_num_rows($result);
              if($rows==1){
