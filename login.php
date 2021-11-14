@@ -18,6 +18,7 @@
              $result = mysqli_query($con,$sql) or die('Error: ' . mysqli_error($con));
              $rows = mysqli_num_rows($result);
              if($rows==1){
+                      $_SESSION['firstname']=$firstname;
                       $_SESSION['email'] = $email;
                       header("Location: acceuil.php");
                 }else{

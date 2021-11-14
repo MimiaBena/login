@@ -3,7 +3,12 @@
     <head>
     </head>
     <body>
-        <h1>Update</h1>
+        <form>
+            <h1>Update password</h1>
+        
+        
+        </form>
+        
     
     
     </body>
