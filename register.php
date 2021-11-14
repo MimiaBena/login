@@ -18,23 +18,32 @@
               }elseif(!preg_match("/^[a-zA-Z-' ]*$/",$lastname)){
                      $lastnameErr =" Only letters and white space allowed!";
               }
-             if(empty($_POST['email'])){
-                 $emailErr = "Email is required!";
-                 
-             }
+             
              
              if(empty($_POST['password'] || $_POST['passwordconf'] )){
                  $passwordErr = "Password is required!";
                  
              }
-             if(!($_POST['password'] === $_POST['passwordconf'])){
+             elseif(strlen($_POST['password'])>=10){
+                 
+                 $passwordErr = "Choose another password, please!".strlen($_POST['password']);
+                 
+             }
+             elseif(!($_POST['password'] === $_POST['passwordconf'])){
                      $passwordErr = "Choose the same password!";
                  }
              
-             elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+             if(empty($_POST['email'])){
+                 $emailErr = "Email is required!";
+                 
+             }
+             elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
                $emailErr = "Invalid email format!";   
-            }
-             else{
+        }elseif(!mysqli_query($con,"SELECT * FROM users WHERE email='".$_POST['email']."'") ){
+                 //mysqli_num_rows(mysqli_query($con,"SELECT * FROM users WHERE email='".$_POST['email']."'"))==1){
+                   $emailErr = "It's already exist!";
+                 
+             }else{
                 
                    $firstname = inputTest($_POST['firstname']);
                    $lastname = inputTest($_POST['lastname']);
@@ -45,7 +54,7 @@ $sql = "INSERT INTO users SET firstname='".$_POST['firstname']."', lastname='".$
 //$sql = "INSERT INTO `users`( firstname, lastname, email, password) VALUES ('$firstname','$lastname','$email' ,'$password')";
                  if(!mysqli_query($con, $sql)){
                      
-                     echo "Une erreur s'est produite: ".mysqli_error($con);
+                     echo "Problem connexion: ".mysqli_error($con);
                  }else{
                      
                       echo "Succed ";
@@ -54,22 +63,9 @@ $sql = "INSERT INTO users SET firstname='".$_POST['firstname']."', lastname='".$
              $result = mysqli_query($con, $sql) or die('Error: ' . mysqli_error($con));*/
                
              }
-             
-                 
-             
-                 
-                 
-             
-               
-       
          } 
         
      }
-
-
-
-
-
 
 ?>
 
@@ -115,15 +111,7 @@ $sql = "INSERT INTO users SET firstname='".$_POST['firstname']."', lastname='".$
                   <br><br>
                   <input type="submit" name="submit" value="Create account">
                   <p>Already have an account?<a href="index.php"> Login</a></p>
-                  
-                  
-                  
-                
-                  
-              
-              
-              
-              
+    
               </form>
         
         
